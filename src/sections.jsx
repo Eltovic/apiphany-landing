@@ -574,7 +574,7 @@ function Pricing(){
       "Pinterest + Email distribution",
     ]},
     { name: "Pro", mo: 149, yr: 119, desc: "Scale across niches with Claude-powered writing.", model: "Claude Sonnet 4.6", feat: true, cta: "Start with Pro", items: [
-      "Up to 5 sites · 100 articles / mo",
+      "1 site · 100 articles / mo",
       "5 niches · Regional targeting (10 markets)",
       "All social channels",
       "A/B headline testing · Priority queue",
