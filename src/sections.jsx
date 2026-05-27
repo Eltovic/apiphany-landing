@@ -267,9 +267,9 @@ function DashboardPreview(){
 
 function FakeDashboard(){
   return (
-    <div className="preview-body" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 28, padding: 28 }}>
+    <div className="preview-body preview-layout" style={{ display: "grid", gap: 28, padding: 28 }}>
       {/* sidebar */}
-      <div>
+      <div className="preview-sidebar">
         <div style={{ fontFamily: "JetBrains Mono", fontSize: 11, letterSpacing: ".12em", color: "var(--muted-cream)", textTransform: "uppercase", marginBottom: 14 }}>Workspace</div>
         {["Niches", "Articles", "Affiliate links", "Revenue", "Agents", "Settings"].map((it, i) => (
           <div key={it} style={{
@@ -289,7 +289,7 @@ function FakeDashboard(){
       {/* main */}
       <div>
         {/* row stats */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 18 }}>
+        <div className="preview-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 18 }}>
           {[
             { lbl: "Revenue (30d)", val: "$4,820", trend: "+38%" },
             { lbl: "Articles live", val: "147", trend: "+12 this wk" },

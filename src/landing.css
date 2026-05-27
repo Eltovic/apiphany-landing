@@ -1260,6 +1260,9 @@ footer .foot-bottom{
 }
 .form-error a{ color: var(--honey); }
 
+/* ---------- preview layout (base — desktop grid) ---------- */
+.preview-layout{ grid-template-columns: 220px 1fr; }
+
 /* ---------- responsive ---------- */
 @media (max-width: 960px){
   .hero-grid{ grid-template-columns: 1fr; gap: 32px; }
@@ -1352,4 +1355,25 @@ footer .foot-bottom{
   /* contact */
   .contact-form-card{ padding: 24px 20px; }
   .contact-copy h2{ font-size: clamp(1.6rem, 6vw, 2rem); }
+
+  /* prevent accidental horizontal scroll */
+  html, body{ overflow-x: hidden; }
+
+  /* hero h1 — scale down from 48px minimum */
+  .hero h1{ font-size: clamp(34px, 9.5vw, 44px); }
+
+  /* hero form — stack input over button */
+  .hero-form{
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 10px;
+    max-width: 100%;
+  }
+  .hero-form input{ padding: 12px 16px; text-align: center; }
+  .hero-form .btn{ width: 100%; height: 48px; justify-content: center; }
+
+  /* dashboard preview — single column, hide sidebar */
+  .preview-layout{ grid-template-columns: 1fr; padding: 16px; }
+  .preview-sidebar{ display: none; }
+  .preview-stats-grid{ grid-template-columns: repeat(2, 1fr) !important; }
 }
