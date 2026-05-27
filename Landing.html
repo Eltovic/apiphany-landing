@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Apiphany — autonomous content, real affiliate revenue</title>
+<meta name="description" content="Five AI agents discover niches, write SEO articles, inject affiliate links and publish to your site — entirely on autopilot. Plans from $49/mo." />
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website" />
+<meta property="og:url"         content="https://apiphany.eastwaresolutions.com/" />
+<meta property="og:title"       content="Apiphany — autonomous content, real affiliate revenue" />
+<meta property="og:description" content="Five AI agents discover niches, write SEO articles, inject affiliate links and publish to your site — entirely on autopilot." />
+<meta property="og:image"       content="https://apiphany.eastwaresolutions.com/uploads/og-image.png" />
+<meta property="og:site_name"   content="Apiphany" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Apiphany — autonomous content, real affiliate revenue" />
+<meta name="twitter:description" content="Five AI agents discover niches, write SEO articles, inject affiliate links and publish to your site — entirely on autopilot." />
+<meta name="twitter:image"       content="https://apiphany.eastwaresolutions.com/uploads/og-image.png" />
+
+<!-- Favicon (inline SVG data URI — no separate file needed) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 3 33.5 10.5 33.5 25.5 20 33 6.5 25.5 6.5 10.5z' fill='%230B2118' stroke='%23E8B84A' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M20 12 27 17.5 20 26 13 17.5z' fill='%23E8B84A'/%3E%3Cpath d='M20 9.5v3M20 27v2M11 18.5h2M27 18.5h2' stroke='%23E8B84A' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="canonical" href="https://apiphany.eastwaresolutions.com/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="src/landing.css" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="src/tweaks-panel.jsx"></script>
+<script type="text/babel" src="src/icons.jsx"></script>
+<script type="text/babel" src="src/sections.jsx"></script>
+<script type="text/babel" src="src/landing.jsx"></script>
+
+<script>
+  // Babel standalone may miss DOMContentLoaded if CDN scripts load slowly.
+  // This ensures the transform always runs.
+  (function ensureBabel() {
+    function run() {
+      if (typeof Babel !== 'undefined' && document.getElementById('root').childElementCount === 0) {
+        Babel.transformScriptTags();
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    }
+    window.addEventListener('load', run);
+    // Final fallback: retry after a short delay
+    setTimeout(run, 200);
+  })();
+</script>
+</body>
+</html>
