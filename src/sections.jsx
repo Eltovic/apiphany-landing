@@ -70,10 +70,10 @@ function Hero({ headline, sub, onSubmit }){
   async function handleHeroSubmit(e){
     e.preventDefault();
     try {
-      await fetch("https://formsubmit.co/ajax/eastwaresolutions@gmail.com", {
+      await fetch("/api/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ email, _subject: "Apiphany — new lead from hero form" }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "hero" }),
       });
     } catch (_) { /* silent — don't block UX */ }
     setSent(true);
@@ -698,10 +698,10 @@ function FinalCTA({ headline, onSubmit }){
   async function handleCtaSubmit(e){
     e.preventDefault();
     try {
-      await fetch("https://formsubmit.co/ajax/eastwaresolutions@gmail.com", {
+      await fetch("/api/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ email, _subject: "Apiphany — new lead from CTA" }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "cta" }),
       });
     } catch (_) { /* silent */ }
     setSent(true);
@@ -763,7 +763,7 @@ function Footer(){
             <h4>Company</h4>
             <ul>
               <li><a href="https://app.eastwaresolutions.com/login">Sign in</a></li>
-              <li><a href="mailto:hello@eastwaresolutions.com">Contact</a></li>
+              <li><a href="mailto:support@eastwaresolutions.com">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -799,13 +799,12 @@ function ContactForm(){
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/eastwaresolutions@gmail.com", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ ...form, _subject: "Apiphany enquiry: " + form.type }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
-      const data = await res.json();
-      setStatus(data.success === "true" || res.ok ? "sent" : "error");
+      setStatus(res.ok ? "sent" : "error");
     } catch {
       setStatus("error");
     }
@@ -833,9 +832,9 @@ function ContactForm(){
             <span className="eyebrow">Get in touch</span>
             <h2>Let's talk <span className="serif">business.</span></h2>
             <p>Agencies, enterprise teams, and potential partners — we respond within one business day.</p>
-            <a href="mailto:hello@eastwaresolutions.com" className="contact-email">
+            <a href="mailto:support@eastwaresolutions.com" className="contact-email">
               <Icon.rss width="15" height="15" />
-              hello@eastwaresolutions.com
+              support@eastwaresolutions.com
             </a>
           </div>
 
@@ -869,7 +868,7 @@ function ContactForm(){
             </button>
             {status === "error" && (
               <p className="form-error">
-                Something went wrong — email us directly at <a href="mailto:hello@eastwaresolutions.com">hello@eastwaresolutions.com</a>
+                Something went wrong — email us directly at <a href="mailto:support@eastwaresolutions.com">support@eastwaresolutions.com</a>
               </p>
             )}
           </form>

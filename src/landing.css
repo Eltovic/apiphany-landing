@@ -1283,3 +1283,73 @@ footer .foot-bottom{
   .nav-cta{ display: none; }
   .nav-hamburger{ display: flex; }
 }
+
+/* ---------- mobile ---------- */
+@media (max-width: 640px){
+  /* layout */
+  .wrap{ padding: 0 18px; }
+
+  /* reduce all section vertical padding */
+  .hero{ padding: 48px 0 36px; }
+  .section-dark{ padding: 72px 0 64px; }
+  .preview-section{ padding: 72px 0; }
+  .features-section{ padding: 72px 0 56px; }
+  .quote-section{ padding: 72px 0; }
+  .pricing-section{ padding: 72px 0; }
+  .faq-section{ padding: 72px 0; }
+  .cta-section{ padding: 64px 0 80px; }
+  .live-section{ padding: 64px 0; }
+  .contact-section{ padding: 64px 0; }
+  footer{ padding: 56px 0 32px; }
+
+  /* hero */
+  .hero-stage{ display: none; }          /* hide illustration — saves vertical space */
+  .hero h1{ margin-top: 20px; }
+  .hero p.lede{ font-size: 16px; margin-top: 20px; }
+  .hero-form{ margin-top: 28px; }
+  .hero-microcopy{ flex-wrap: wrap; gap: 8px; }
+
+  /* agent steps — single column */
+  .steps{ grid-template-columns: 1fr; gap: 12px; margin-top: 40px; }
+  .step{ min-height: auto; padding: 20px; }
+
+  /* dashboard preview */
+  .preview-body{ padding: 16px; }
+  .preview-bar .url{ display: none; }    /* hide long URL on small screens */
+
+  /* features — single column */
+  .feature-grid{ grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+  .feature.span-3, .feature.span-2{ grid-column: span 1; }
+  .feature.tall{ min-height: auto; }
+
+  /* quote */
+  .quote-card{ padding: 28px 20px; gap: 28px; }
+  .quote-card blockquote{ font-size: clamp(22px, 5.5vw, 32px); }
+  .quote-stats{ flex-direction: column; gap: 20px; }
+  .quote-stat .num{ font-size: 36px; }
+
+  /* pricing */
+  .billing-toggle{ width: 100%; justify-content: center; }
+  .plan{ padding: 24px; }
+  .plan .price{ font-size: 44px; }
+
+  /* faq */
+  .faq-q{ font-size: 16px; }
+
+  /* cta */
+  .cta-card{ padding: 40px 20px; border-radius: 20px; }
+  .cta-card .hero-form{ max-width: 100%; }
+
+  /* footer */
+  footer .foot-grid{ grid-template-columns: 1fr; gap: 32px; }
+  footer .foot-grid > div:first-child{ grid-column: span 1; }
+  footer .foot-bottom{ flex-direction: column; gap: 12px; }
+
+  /* live site section */
+  .live-stats{ flex-direction: column; gap: 16px; }
+  .live-num{ font-size: 1.75rem; }
+
+  /* contact */
+  .contact-form-card{ padding: 24px 20px; }
+  .contact-copy h2{ font-size: clamp(1.6rem, 6vw, 2rem); }
+}
