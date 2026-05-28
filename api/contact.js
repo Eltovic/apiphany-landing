@@ -7,9 +7,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
-  const subject = `Apiphany enquiry [${type || "general"}] from ${name}`;
+  const subject = `Apithany enquiry [${type || "general"}] from ${name}`;
   const html = `
-    <h2 style="margin:0 0 16px;font-family:sans-serif">New Apiphany enquiry</h2>
+    <h2 style="margin:0 0 16px;font-family:sans-serif">New Apithany enquiry</h2>
     <table style="font-family:sans-serif;font-size:15px;border-collapse:collapse">
       <tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Name</td><td><strong>${name}</strong></td></tr>
       <tr><td style="padding:4px 12px 4px 0;color:#666">Company</td><td>${company || "—"}</td></tr>
@@ -28,8 +28,8 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Apiphany", email: "noreply@eastwaresolutions.com" },
-        to: [{ email: "support@eastwaresolutions.com", name: "Apiphany Support" }],
+        sender: { name: "Apithany", email: "noreply@eastwaresolutions.com" },
+        to: [{ email: "support@eastwaresolutions.com", name: "Apithany Support" }],
         replyTo: { email, name },
         subject,
         htmlContent: html,

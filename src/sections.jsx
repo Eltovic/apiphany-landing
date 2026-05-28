@@ -23,7 +23,7 @@ function Nav({ onCta }){
           {links.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
         </nav>
         <div className="nav-cta">
-          <a className="btn btn-ghost" href="https://app.eastwaresolutions.com/login">Sign in</a>
+          <a className="btn btn-ghost" href="https://app.apithany.com/login">Sign in</a>
           <button className="btn btn-primary" onClick={onCta}>
             Get started <Icon.arrow width="16" height="16" />
           </button>
@@ -48,7 +48,7 @@ function Nav({ onCta }){
               <a key={l.href} href={l.href} className="drawer-link" onClick={close}>{l.label}</a>
             ))}
             <div className="drawer-actions">
-              <a className="btn btn-ghost" href="https://app.eastwaresolutions.com/login" onClick={close}>Sign in</a>
+              <a className="btn btn-ghost" href="https://app.apithany.com/login" onClick={close}>Sign in</a>
               <button className="btn btn-primary" onClick={() => { close(); onCta && onCta(); }}>
                 Get started <Icon.arrow width="16" height="16" />
               </button>
@@ -222,7 +222,7 @@ function HowItWorks(){
   return (
     <section className="section-dark" id="how" data-screen-label="02 How it works">
       <div className="wrap">
-        <span className="eyebrow">How Apiphany works</span>
+        <span className="eyebrow">How Apithany works</span>
         <h2>Five agents.<br />One <span className="serif">epiphany</span> per niche.</h2>
         <div className="steps">
           {steps.map((s) => (
@@ -256,7 +256,7 @@ function DashboardPreview(){
             <span className="dot" style={{ background: "#E08A7F" }} />
             <span className="dot" style={{ background: "#E8B84A" }} />
             <span className="dot" style={{ background: "#7FB66E" }} />
-            <span className="url">app.eastwaresolutions.com / dashboard</span>
+            <span className="url">app.apithany.com / dashboard</span>
           </div>
           <FakeDashboard />
         </div>
@@ -464,9 +464,9 @@ function LiveSite(){
         <div className="live-grid">
 
           <div className="live-copy">
-            <span className="eyebrow">Built with Apiphany</span>
+            <span className="eyebrow">Built with Apithany</span>
             <h2>Ranked by Google.<br /><span className="serif">Running on autopilot.</span></h2>
-            <p>Reviewers&apos; Guild is a live affiliate blog running entirely on Apiphany — no writers, no editorial team. Five AI agents pick niches, write GEO-tuned articles, inject affiliate links, and publish daily.</p>
+            <p>Reviewers&apos; Guild is a live affiliate blog running entirely on Apithany — no writers, no editorial team. Five AI agents pick niches, write GEO-tuned articles, inject affiliate links, and publish daily.</p>
             <div className="live-stats">
               <div className="live-stat">
                 <span className="live-num">235<span className="serif">+</span></span>
@@ -529,7 +529,7 @@ function Quote(){
           <div>
             <div className="quote-eyebrow">From the founder</div>
             <blockquote>
-              "We built Apiphany to run our own affiliate network. Reviewers&apos; Guild went from zero to 235 published articles across 6 niches — with no writers and no editorial team. Every article is scored for AI citation readiness before it ships."
+              "We built Apithany to run our own affiliate network. Reviewers&apos; Guild went from zero to 235 published articles across 6 niches — with no writers and no editorial team. Every article is scored for AI citation readiness before it ships."
             </blockquote>
             <div className="who">
               <div className="avatar">I</div>
@@ -643,7 +643,7 @@ function FAQ(){
     },
     {
       q: "Do I need an existing WordPress site?",
-      a: "No. Every plan includes an auto-provisioned WordPress site with hosting. If you already have a site, connect it during onboarding with your WP application password and Apiphany will publish directly to it.",
+      a: "No. Every plan includes an auto-provisioned WordPress site with hosting. If you already have a site, connect it during onboarding with your WP application password and Apithany will publish directly to it.",
     },
     {
       q: "Can I use my own affiliate accounts?",
@@ -651,7 +651,7 @@ function FAQ(){
     },
     {
       q: "What's AEO/GEO scoring and why does it matter?",
-      a: "Answer Engine Optimisation (AEO) and Generative Engine Optimisation (GEO) measure how likely your content is to be cited by AI assistants like ChatGPT, Perplexity, and Google SGE. Every Apiphany article is scored before publish. Articles below 65/100 are automatically improved before going live.",
+      a: "Answer Engine Optimisation (AEO) and Generative Engine Optimisation (GEO) measure how likely your content is to be cited by AI assistants like ChatGPT, Perplexity, and Google SGE. Every Apithany article is scored before publish. Articles below 65/100 are automatically improved before going live.",
     },
     {
       q: "Which niches perform best?",
@@ -748,7 +748,7 @@ function Footer(){
           <div>
             <Brand onDark />
             <p style={{ marginTop: 20, maxWidth: 320, fontSize: 14, color: "var(--moss-2)" }}>
-              Apiphany is powered by the ATH Engine — autonomous content, real affiliate revenue. Made by people who got tired of writing about sleep tracker rings.
+              Apithany is powered by the ATH Engine — autonomous content, real affiliate revenue. Made by people who got tired of writing about sleep tracker rings.
             </p>
           </div>
           <div>
@@ -762,16 +762,16 @@ function Footer(){
           <div>
             <h4>Company</h4>
             <ul>
-              <li><a href="https://app.eastwaresolutions.com/login">Sign in</a></li>
+              <li><a href="https://app.apithany.com/login">Sign in</a></li>
               <li><a href="mailto:support@eastwaresolutions.com">Contact</a></li>
             </ul>
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2026 Eastware Solutions International LLC · Apiphany™</span>
+          <span>© 2026 Eastware Solutions International LLC · Apithany™</span>
           <span style={{ display: "flex", gap: 18 }}>
-            <a href="https://app.eastwaresolutions.com/privacy" target="_blank" rel="noopener noreferrer">Privacy</a>
-            <a href="https://app.eastwaresolutions.com/terms" target="_blank" rel="noopener noreferrer">Terms</a>
+            <a href="https://app.apithany.com/privacy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a href="https://app.apithany.com/terms" target="_blank" rel="noopener noreferrer">Terms</a>
           </span>
         </div>
       </div>

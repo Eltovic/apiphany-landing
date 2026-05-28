@@ -1,5 +1,5 @@
 /* global React */
-// Inline SVG icons + the Apiphany glyph + brand pieces.
+// Inline SVG icons + the Apithany glyph + brand pieces.
 
 const Icon = {
   search: (p) => (
@@ -44,11 +44,11 @@ const Icon = {
 };
 
 /* ============================================
-   APIPHANY GLYPH
+   APITHANY GLYPH
    A hex (api/honeycomb nod) + interior spark (epiphany).
    The negative space inside also reads as a gem (revelation moment).
    ============================================ */
-function ApiphanyGlyph({ size = 36, accent = "var(--honey)", ink = "var(--ink)" }){
+function ApithanyGlyph({ size = 36, accent = "var(--honey)", ink = "var(--ink)" }){
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none" style={{ display: "block" }}>
       {/* outer rounded hex */}
@@ -63,11 +63,11 @@ function ApiphanyGlyph({ size = 36, accent = "var(--honey)", ink = "var(--ink)" 
   );
 }
 
-/* The wordmark — "Apiphany" with API highlighted */
+/* The wordmark — "Apithany" with API highlighted */
 function Wordmark({ onDark = false, size = 26 }){
   return (
     <span className={"wordmark" + (onDark ? " on-dark" : "")} style={{ fontSize: size }}>
-      <span className="ath">api</span>phany
+      <span className="ath">api</span>thany
     </span>
   );
 }
@@ -77,7 +77,7 @@ function Brand({ onDark = false, withTag = true }){
   return (
     <div className="brand-block">
       <div className="glyph" style={onDark ? { background: "var(--ink-2)" } : null}>
-        <ApiphanyGlyph size={22} />
+        <ApithanyGlyph size={22} />
       </div>
       <div>
         <Wordmark onDark={onDark} />
@@ -87,4 +87,4 @@ function Brand({ onDark = false, withTag = true }){
   );
 }
 
-Object.assign(window, { Icon, ApiphanyGlyph, Wordmark, Brand });
+Object.assign(window, { Icon, ApithanyGlyph, Wordmark, Brand });

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 1. Add to Brevo contact list (list ID 3 = Apiphany leads; create it if it doesn't exist yet)
+    // 1. Add to Brevo contact list (list ID 3 = Apithany leads; create it if it doesn't exist yet)
     await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
@@ -31,9 +31,9 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Apiphany", email: "noreply@eastwaresolutions.com" },
+        sender: { name: "Apithany", email: "noreply@eastwaresolutions.com" },
         to: [{ email: "support@eastwaresolutions.com" }],
-        subject: `New Apiphany lead [${source}]: ${email}`,
+        subject: `New Apithany lead [${source}]: ${email}`,
         htmlContent: `<p style="font-family:sans-serif">New lead from the <strong>${source}</strong> form:<br/><a href="mailto:${email}">${email}</a></p>`,
       }),
     });
