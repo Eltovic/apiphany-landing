@@ -566,21 +566,21 @@ function Pricing(){
   const [annual, setAnnual] = useState(false);
 
   const plans = [
-    { name: "Starter", mo: 49, yr: 39, desc: "Launch your first autonomous niche site.", model: "Gemini 2.5 Flash", feat: false, cta: "Get started", items: [
+    { name: "Starter", mo: 49, yr: 39, desc: "Launch your first autonomous niche site.", model: "Gemini 2.5 Flash", feat: false, cta: "Get started", href: "https://app.apithany.com/register", items: [
       "1 site · 30 articles / mo",
       "1 niche · AEO/GEO scoring",
       "Auto-provisioned WordPress site",
       "Awin + Amazon affiliates",
       "Pinterest + Email distribution",
     ]},
-    { name: "Pro", mo: 149, yr: 119, desc: "Scale across niches with Claude-powered writing.", model: "Claude Sonnet 4.6", feat: true, cta: "Start with Pro", items: [
+    { name: "Pro", mo: 149, yr: 119, desc: "Scale across niches with Claude-powered writing.", model: "Claude Sonnet 4.6", feat: true, cta: "Start with Pro", href: "https://app.apithany.com/register?plan=pro", items: [
       "1 site · 100 articles / mo",
       "5 niches · Regional targeting (10 markets)",
       "All social channels",
       "A/B headline testing · Priority queue",
       "All affiliate networks",
     ]},
-    { name: "Agency", mo: 349, yr: 279, desc: "Unlimited scale for agencies and portfolios.", model: "Claude Sonnet 4.6", feat: false, cta: "Talk to us", items: [
+    { name: "Agency", mo: 349, yr: 279, desc: "Unlimited scale for agencies and portfolios.", model: "Claude Sonnet 4.6", feat: false, cta: "Talk to us", href: "#contact", items: [
       "Up to 3 sites · 300 articles / mo",
       "Unlimited niches · CTR title optimizer",
       "SSO + audit log",
@@ -618,7 +618,17 @@ function Pricing(){
                 {annual && <div className="annual-note">Billed ${price * 12} / year</div>}
                 <p className="desc">{p.desc}</p>
                 <ul>{p.items.map((it) => <li key={it}>{it}</li>)}</ul>
-                <button className={"btn " + (p.feat ? "btn-on-dark" : "btn-primary")} style={{ width: "100%" }}>
+                <button
+                  className={"btn " + (p.feat ? "btn-on-dark" : "btn-primary")}
+                  style={{ width: "100%" }}
+                  onClick={() => {
+                    if (p.href.startsWith("#")) {
+                      document.querySelector(p.href)?.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      window.location.href = p.href;
+                    }
+                  }}
+                >
                   {p.cta} <Icon.arrow width="16" height="16" />
                 </button>
               </div>
