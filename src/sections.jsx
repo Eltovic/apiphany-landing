@@ -177,11 +177,19 @@ function HeroStage(){
         </div>
       </div>
 
-      <div className="float-card" style={{ bottom: "6%", left: "8%", animationDelay: "3s" }}>
+      <div className="float-card" style={{ bottom: "24%", left: "4%", animationDelay: "3s" }}>
         <span className="badge"><Icon.chart width="14" height="14" /></span>
         <div>
           <div style={{ fontWeight: 600 }}>+$148 today</div>
           <div style={{ fontSize: 11, color: "var(--muted-cream)" }}>Amazon · 12 conversions</div>
+        </div>
+      </div>
+
+      <div className="float-card" style={{ bottom: "4%", right: "0%", animationDelay: "4.5s" }}>
+        <span className="badge"><Icon.link width="14" height="14" /></span>
+        <div>
+          <div style={{ fontWeight: 600 }}>DR +4 this week</div>
+          <div style={{ fontSize: 11, color: "var(--muted-cream)" }}>8 pitches · 3 links won</div>
         </div>
       </div>
     </div>
@@ -341,6 +349,7 @@ function FakeDashboard(){
           <div><span style={{ color: "var(--honey)" }}>author</span>    ▸ drafted <span style={{ color: "var(--paper)" }}>"Best Gaming Headsets 2026"</span> · 2,840 words</div>
           <div><span style={{ color: "var(--honey)" }}>editor</span>    ▸ AEO 88/100 · GEO pass · 6 affiliate links</div>
           <div><span style={{ color: "var(--accent)" }}>publisher</span> ▸ <span style={{ color: "var(--paper)" }}>live · schema + Pinterest pin</span> ✓</div>
+          <div><span style={{ color: "var(--moss-2)" }}>link-agent</span>▸ 3 broken links found · 2 directory pitches queued</div>
         </div>
       </div>
     </div>
@@ -395,6 +404,36 @@ function Features(){
             <div className="ficon"><Icon.shield width="20" height="20" /></div>
             <h3>AI Citation Ready</h3>
             <p>Every article is AEO + GEO scored before publish. Structured so ChatGPT, Perplexity, and Google SGE cite your content by name.</p>
+          </div>
+
+          {/* DR Outreach — full-width new feature */}
+          <div className="feature" style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", gap: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div className="ficon"><Icon.chart width="20" height="20" /></div>
+              <span style={{
+                fontSize: 11, fontFamily: "JetBrains Mono", letterSpacing: ".1em",
+                textTransform: "uppercase", padding: "3px 8px", borderRadius: 999,
+                background: "var(--honey)", color: "var(--ink)", fontWeight: 600,
+              }}>New</span>
+            </div>
+            <h3 style={{ margin: 0 }}>Domain Rating growth, on autopilot</h3>
+            <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <p style={{ flex: "1 1 320px", margin: 0, maxWidth: 520 }}>
+                A link-building agent scans for broken external links on high-DR sites, unlinked brand mentions across the web, and 21 verified niche directories. AI drafts the outreach email for each opportunity — you review and approve with one click. DR compounds every week without any manual prospecting.
+              </p>
+              <div style={{ display: "flex", gap: "2rem", flex: "0 0 auto", flexWrap: "wrap" }}>
+                {[
+                  { val: "21", lbl: "Verified directories" },
+                  { val: "5×", lbl: "Link channels" },
+                  { val: "1‑click", lbl: "Approve & send" },
+                ].map(s => (
+                  <div key={s.lbl} style={{ textAlign: "center", minWidth: 80 }}>
+                    <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: "-0.03em", color: "var(--ink)", lineHeight: 1 }}>{s.val}</div>
+                    <div style={{ fontSize: 11, color: "var(--muted)", fontFamily: "JetBrains Mono", letterSpacing: ".06em", textTransform: "uppercase", marginTop: 4 }}>{s.lbl}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -469,7 +508,7 @@ function LiveSite(){
             <p>Reviewers&apos; Guild is a live affiliate blog running entirely on Apithany — no writers, no editorial team. Five AI agents pick niches, write GEO-tuned articles, inject affiliate links, and publish daily.</p>
             <div className="live-stats">
               <div className="live-stat">
-                <span className="live-num">235<span className="serif">+</span></span>
+                <span className="live-num">229<span className="serif">+</span></span>
                 <span className="live-lbl">Articles live</span>
               </div>
               <div className="live-stat">
@@ -529,7 +568,7 @@ function Quote(){
           <div>
             <div className="quote-eyebrow">From the founder</div>
             <blockquote>
-              "We built Apithany to run our own affiliate network. Reviewers&apos; Guild went from zero to 235 published articles across 6 niches — with no writers and no editorial team. Every article is scored for AI citation readiness before it ships."
+              "We built Apithany to run our own affiliate network. Reviewers&apos; Guild went from zero to 229 published articles across 6 niches — with no writers and no editorial team. Every article is scored for AI citation readiness before it ships."
             </blockquote>
             <div className="who">
               <div className="avatar">I</div>
@@ -541,7 +580,7 @@ function Quote(){
           </div>
           <div className="quote-stats">
             <div className="quote-stat">
-              <div className="num">235<span className="serif">+</span></div>
+              <div className="num">229<span className="serif">+</span></div>
               <div className="lbl">Articles published</div>
             </div>
             <div className="quote-stat">

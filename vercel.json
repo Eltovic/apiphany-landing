@@ -23,6 +23,18 @@
         { "key": "X-Frame-Options",        "value": "DENY" },
         { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
       ]
+    },
+    {
+      "source": "/uploads/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/src/(.*\\.css)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=3600" }
+      ]
     }
   ]
 }

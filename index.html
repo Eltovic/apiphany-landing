@@ -24,6 +24,80 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 3 33.5 10.5 33.5 25.5 20 33 6.5 25.5 6.5 10.5z' fill='%230B2118' stroke='%23E8B84A' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M20 12 27 17.5 20 26 13 17.5z' fill='%23E8B84A'/%3E%3Cpath d='M20 9.5v3M20 27v2M11 18.5h2M27 18.5h2' stroke='%23E8B84A' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E" />
 <link rel="canonical" href="https://apithany.com/" />
 
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://apithany.com/#organization",
+      "name": "Apithany",
+      "url": "https://apithany.com",
+      "logo": "https://apithany.com/uploads/pasted-1779852010914-0.png",
+      "description": "Autonomous content and affiliate revenue platform powered by multi-agent AI.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Eastware Solutions International LLC"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "support@eastwaresolutions.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://apithany.com/#website",
+      "url": "https://apithany.com",
+      "name": "Apithany",
+      "publisher": { "@id": "https://apithany.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://apithany.com/#product",
+      "name": "Apithany",
+      "url": "https://apithany.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Five AI agents discover niches, write AEO/GEO-tuned articles, inject affiliate links, grow your domain rating, and publish straight to WordPress — entirely on autopilot.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "49",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "149",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Agency",
+          "price": "349",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ],
+      "featureList": [
+        "Autonomous niche discovery and scoring",
+        "AI article writing with AEO/GEO optimisation",
+        "Affiliate link injection (Awin, Amazon, CJ)",
+        "WordPress auto-publish with schema markup",
+        "Domain rating growth via automated backlink outreach",
+        "Pinterest, LinkedIn, and email distribution"
+      ],
+      "publisher": { "@id": "https://apithany.com/#organization" }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -38,7 +112,64 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="root"></div>
+
+<!--
+  Pre-rendered SEO shell — visible to crawlers that don't execute JavaScript.
+  React replaces this div's content on mount (createRoot renders into #root).
+  Styled to match the dark background so there is no flash before React loads.
+-->
+<div id="root" style="background:#0B2118;color:#F0EFE6;font-family:system-ui,sans-serif;">
+  <nav style="padding:16px 24px;display:flex;gap:20px;font-size:14px;">
+    <a href="/" style="color:#E8B84A;font-weight:700;text-decoration:none;">Apithany</a>
+    <a href="#how"       style="color:#F0EFE6;text-decoration:none;">How it works</a>
+    <a href="#features"  style="color:#F0EFE6;text-decoration:none;">Agents</a>
+    <a href="#live-site" style="color:#F0EFE6;text-decoration:none;">Results</a>
+    <a href="#pricing"   style="color:#F0EFE6;text-decoration:none;">Pricing</a>
+    <a href="#faq"       style="color:#F0EFE6;text-decoration:none;">FAQ</a>
+    <a href="https://app.apithany.com/login"    style="color:#F0EFE6;text-decoration:none;">Sign in</a>
+    <a href="https://app.apithany.com/register" style="color:#E8B84A;text-decoration:none;">Get started</a>
+  </nav>
+  <main style="padding:48px 24px;max-width:900px;margin:0 auto;">
+    <h1 style="font-size:clamp(36px,5vw,72px);font-weight:700;line-height:1.1;margin:0 0 24px;letter-spacing:-0.03em;">
+      Autonomous content. Real affiliate revenue.
+    </h1>
+    <p style="font-size:18px;line-height:1.6;max-width:640px;color:#B9C9B0;margin:0 0 32px;">
+      Five AI agents discover niches, write SEO articles, inject affiliate links and publish straight to your site — entirely on autopilot. Plans from $49/mo.
+    </p>
+    <a href="https://app.apithany.com/register" style="display:inline-block;padding:14px 28px;background:#E8B84A;color:#0B2118;font-weight:700;border-radius:999px;text-decoration:none;">
+      Get started
+    </a>
+
+    <section id="how" style="margin-top:80px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 24px;">How Apithany works</h2>
+      <p>Five specialised agents — Scout, Strategist, Author, Editor, Publisher — collaborate on every article from niche discovery to live WordPress post. A sixth agent grows your domain rating automatically via backlink outreach.</p>
+    </section>
+
+    <section id="features" style="margin-top:80px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 24px;">The agent stack</h2>
+      <p>Built like a newsroom that never sleeps. Niche discovery scored on 10 axes, SEO-tuned drafts in your tone, smart affiliate links, full WordPress automation, AI citation readiness scoring, and automated domain rating growth.</p>
+
+      <h3 style="margin-top:32px;">Domain Rating growth, on autopilot</h3>
+      <p>A link-building agent scans for broken external links, unlinked brand mentions, and 21 verified web directories where your site should be listed. AI drafts the outreach email — you approve and send in one click. DR compounds every week without manual prospecting.</p>
+    </section>
+
+    <section id="live-site" style="margin-top:80px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 16px;">Ranked by Google. Running on autopilot.</h2>
+      <p>Reviewers' Guild is a live affiliate blog built entirely with Apithany — 229+ published articles across 6 niches, no writers, no editorial team.</p>
+      <a href="https://www.reviewersguild.blog" style="color:#E8B84A;">See it live →</a>
+    </section>
+
+    <section id="pricing" style="margin-top:80px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 16px;">Pricing</h2>
+      <p>Starter $49/mo · Pro $149/mo · Agency $349/mo. Every plan includes auto-provisioned WordPress hosting.</p>
+    </section>
+
+    <section id="faq" style="margin-top:80px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 24px;">Common questions, straight answers.</h2>
+      <p>How does the article writing work? Do I need an existing site? Can I use my own affiliate accounts? What's AEO/GEO scoring? Can I cancel anytime?</p>
+    </section>
+  </main>
+</div>
 
 <script type="text/babel" src="src/tweaks-panel.jsx"></script>
 <script type="text/babel" src="src/icons.jsx"></script>
