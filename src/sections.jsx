@@ -417,22 +417,21 @@ function Features(){
               }}>New</span>
             </div>
             <h3 style={{ margin: 0 }}>Domain Rating growth, on autopilot</h3>
-            <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-start" }}>
-              <p style={{ flex: "1 1 320px", margin: 0, maxWidth: 520 }}>
-                A link-building agent scans for broken external links on high-DR sites, unlinked brand mentions across the web, and 21 verified niche directories. AI drafts the outreach email for each opportunity — you review and approve with one click. DR compounds every week without any manual prospecting.
-              </p>
-              <div style={{ display: "flex", gap: "2rem", flex: "0 0 auto", flexWrap: "wrap" }}>
-                {[
-                  { val: "21", lbl: "Verified directories" },
-                  { val: "5×", lbl: "Link channels" },
-                  { val: "1‑click", lbl: "Approve & send" },
-                ].map(s => (
-                  <div key={s.lbl} style={{ textAlign: "center", minWidth: 80 }}>
-                    <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: "-0.03em", color: "var(--ink)", lineHeight: 1 }}>{s.val}</div>
-                    <div style={{ fontSize: 11, color: "var(--muted)", fontFamily: "JetBrains Mono", letterSpacing: ".06em", textTransform: "uppercase", marginTop: 4 }}>{s.lbl}</div>
-                  </div>
-                ))}
-              </div>
+            <p style={{ margin: 0 }}>
+              A link-building agent scans for broken external links on high-DR sites, unlinked brand mentions across the web, and 21 verified niche directories. AI drafts the outreach email for each opportunity — you review and approve with one click. DR compounds every week without any manual prospecting.
+            </p>
+            {/* Stats — 3-column grid so each cell gets equal width on any screen size */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", paddingTop: 4 }}>
+              {[
+                { val: "21",    lbl: "Verified directories" },
+                { val: "5",     lbl: "Link channels" },
+                { val: "1-tap", lbl: "Approve & send" },
+              ].map(s => (
+                <div key={s.lbl} style={{ textAlign: "center", padding: "14px 8px", background: "var(--cream)", borderRadius: 12 }}>
+                  <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.03em", color: "var(--ink)", lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontSize: 10, color: "var(--muted)", fontFamily: "JetBrains Mono", letterSpacing: ".06em", textTransform: "uppercase", marginTop: 6, lineHeight: 1.4 }}>{s.lbl}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -457,7 +456,7 @@ function NicheChips(){
           display: "flex", justifyContent: "space-between", alignItems: "center",
           fontSize: 13
         }}>
-          <span>{c.n}</span>
+          <span style={{ color: "var(--ink)", fontWeight: 500 }}>{c.n}</span>
           <span style={{
             fontFamily: "JetBrains Mono",
             background: c.s >= 85 ? "var(--accent)" : "var(--ink)",
