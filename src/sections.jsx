@@ -503,7 +503,7 @@ function LiveSite(){
 
           <div className="live-copy">
             <span className="eyebrow">Built with Apithany</span>
-            <h2>Ranked by Google.<br /><span className="serif">Running on autopilot.</span></h2>
+            <h2 style={{ color: "var(--ink)" }}>Ranked by Google.<br /><span className="serif" style={{ color: "var(--ink)" }}>Running on autopilot.</span></h2>
             <p>Reviewers&apos; Guild is a live affiliate blog running entirely on Apithany — no writers, no editorial team. Five AI agents pick niches, write GEO-tuned articles, inject affiliate links, and publish daily.</p>
             <div className="live-stats">
               <div className="live-stat">
