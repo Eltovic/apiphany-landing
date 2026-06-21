@@ -604,7 +604,7 @@ function Pricing(){
   const [annual, setAnnual] = useState(false);
 
   const plans = [
-    { name: "Starter", mo: 49, yr: 39, desc: "Launch your first autonomous niche site.", model: "Gemini 2.5 Flash", feat: false, cta: "Get started", href: "https://app.apithany.com/register", items: [
+    { name: "Starter", mo: 49, yr: 39, desc: "Launch your first autonomous niche site.", model: "Gemini 2.5 Flash", feat: false, cta: "Get started", href: "https://app.apithany.com/register?plan=starter", items: [
       "1 site · 30 articles / mo",
       "1 niche · AEO/GEO scoring",
       "Auto-provisioned WordPress site",
@@ -618,7 +618,7 @@ function Pricing(){
       "A/B headline testing · Priority queue",
       "All affiliate networks",
     ]},
-    { name: "Agency", mo: 349, yr: 279, desc: "Unlimited scale for agencies and portfolios.", model: "Claude Sonnet 4.6", feat: false, cta: "Talk to us", href: "#contact", items: [
+    { name: "Agency", mo: 349, yr: 279, desc: "Unlimited scale for agencies and portfolios.", model: "Claude Sonnet 4.6", feat: false, cta: "Start with Agency", href: "https://app.apithany.com/register?plan=agency", items: [
       "Up to 3 sites · 300 articles / mo",
       "Unlimited niches · CTR title optimizer",
       "SSO + audit log",
