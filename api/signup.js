@@ -1,11 +1,21 @@
 // POST /api/signup — captures lead email, notifies via Brevo
+import { escapeHtml, truncate, isValidEmail, isRateLimited, getClientIp } from "./_lib/security.js";
+
+const ALLOWED_SOURCES = new Set(["hero", "cta", "landing"]);
+
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
 
-  const { email, source } = req.body || {};
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (isRateLimited(`signup:${getClientIp(req)}`, 10, 10 * 60 * 1000)) {
+    return res.status(429).json({ error: "Too many requests. Please try again later." });
+  }
+
+  const raw = req.body || {};
+  if (!isValidEmail(raw.email)) {
     return res.status(400).json({ error: "Invalid email" });
   }
+  const email  = raw.email;
+  const source = ALLOWED_SOURCES.has(raw.source) ? raw.source : "landing";
 
   try {
     // 1. Add to Brevo contact list (list ID 3 = Apithany leads; create it if it doesn't exist yet)
@@ -19,7 +29,7 @@ export default async function handler(req, res) {
         email,
         listIds: [process.env.BREVO_LEADS_LIST_ID ? Number(process.env.BREVO_LEADS_LIST_ID) : 3],
         updateEnabled: true,
-        attributes: { SOURCE: source || "landing" },
+        attributes: { SOURCE: source },
       }),
     });
 
@@ -33,8 +43,8 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         sender: { name: "Apithany", email: "noreply@eastwaresolutions.com" },
         to: [{ email: "support@eastwaresolutions.com" }],
-        subject: `New Apithany lead [${source}]: ${email}`,
-        htmlContent: `<p style="font-family:sans-serif">New lead from the <strong>${source}</strong> form:<br/><a href="mailto:${email}">${email}</a></p>`,
+        subject: `New Apithany lead [${source}]: ${truncate(email, 254)}`,
+        htmlContent: `<p style="font-family:sans-serif">New lead from the <strong>${escapeHtml(source)}</strong> form:<br/><a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a></p>`,
       }),
     });
 
