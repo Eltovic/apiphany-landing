@@ -1,23 +1,41 @@
 // POST /api/contact — sends enquiry email via Brevo transactional API
+import { escapeHtml, truncate, isValidEmail, isRateLimited, getClientIp } from "./_lib/security.js";
+
+const ALLOWED_TYPES = new Set(["general", "enterprise", "partnership", "demo"]);
+
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
 
-  const { name, company, email, type, message } = req.body || {};
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: "Missing required fields" });
+  if (isRateLimited(`contact:${getClientIp(req)}`, 5, 10 * 60 * 1000)) {
+    return res.status(429).json({ error: "Too many requests. Please try again later." });
   }
 
-  const subject = `Apithany enquiry [${type || "general"}] from ${name}`;
+  const raw = req.body || {};
+  if (!raw.name || !raw.email || !raw.message) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+  if (!isValidEmail(raw.email)) {
+    return res.status(400).json({ error: "Invalid email address" });
+  }
+
+  // Re-validate and cap every field server-side — never trust the client.
+  const name    = truncate(raw.name, 100);
+  const company = truncate(raw.company, 150);
+  const email   = raw.email;
+  const type    = ALLOWED_TYPES.has(raw.type) ? raw.type : "general";
+  const message = truncate(raw.message, 2000);
+
+  const subject = `Apithany enquiry [${type}] from ${escapeHtml(name)}`;
   const html = `
     <h2 style="margin:0 0 16px;font-family:sans-serif">New Apithany enquiry</h2>
     <table style="font-family:sans-serif;font-size:15px;border-collapse:collapse">
-      <tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Name</td><td><strong>${name}</strong></td></tr>
-      <tr><td style="padding:4px 12px 4px 0;color:#666">Company</td><td>${company || "—"}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${email}">${email}</a></td></tr>
-      <tr><td style="padding:4px 12px 4px 0;color:#666">Type</td><td>${type}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Name</td><td><strong>${escapeHtml(name)}</strong></td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Company</td><td>${escapeHtml(company) || "—"}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a></td></tr>
+      <tr><td style="padding:4px 12px 4px 0;color:#666">Type</td><td>${escapeHtml(type)}</td></tr>
     </table>
     <hr style="margin:20px 0;border:none;border-top:1px solid #eee"/>
-    <p style="font-family:sans-serif;font-size:15px;line-height:1.6;white-space:pre-wrap">${message}</p>
+    <p style="font-family:sans-serif;font-size:15px;line-height:1.6;white-space:pre-wrap">${escapeHtml(message)}</p>
   `;
 
   try {
