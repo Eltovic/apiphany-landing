@@ -890,16 +890,16 @@ function ContactForm(){
             <div className="form-row">
               <label>
                 <span>Your name</span>
-                <input type="text" name="name" value={form.name} onChange={update} placeholder="Jane Smith" required />
+                <input type="text" name="name" value={form.name} onChange={update} placeholder="Jane Smith" required maxLength={100} />
               </label>
               <label>
                 <span>Company</span>
-                <input type="text" name="company" value={form.company} onChange={update} placeholder="Acme Inc." />
+                <input type="text" name="company" value={form.company} onChange={update} placeholder="Acme Inc." maxLength={150} />
               </label>
             </div>
             <label>
               <span>Email</span>
-              <input type="email" name="email" value={form.email} onChange={update} placeholder="jane@acme.com" required />
+              <input type="email" name="email" value={form.email} onChange={update} placeholder="jane@acme.com" required maxLength={254} />
             </label>
             <label>
               <span>Inquiry type</span>
@@ -909,7 +909,7 @@ function ContactForm(){
             </label>
             <label>
               <span>Message</span>
-              <textarea name="message" value={form.message} onChange={update} placeholder="Tell us about your project…" rows={4} required />
+              <textarea name="message" value={form.message} onChange={update} placeholder="Tell us about your project…" rows={4} required maxLength={2000} />
             </label>
             <button className="btn btn-primary" type="submit" style={{ width: "100%" }} disabled={status === "sending"}>
               {status === "sending" ? "Sending…" : <><span>Send message</span> <Icon.arrow width="16" height="16" /></>}
