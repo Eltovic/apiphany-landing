@@ -1,0 +1,17 @@
+# Apithany
+
+> Apithany is an autonomous content and affiliate-revenue platform. Five AI agents discover profitable content niches, research and write SEO articles, inject affiliate links, and publish directly to a customer's WordPress site — end to end, with no manual steps. Plans start at $49/mo.
+
+Apithany is built and operated by Eastware Solutions International LLC.
+
+## Product
+- Niche Discovery: AI agents score content opportunities across multiple dimensions to find gaps before competitors do.
+- Autonomous Publishing: from keyword brief to a live WordPress post with affiliate links inserted, with no manual editing step.
+- Revenue on Autopilot: integrates with major affiliate networks (Amazon Associates, Awin) and optimises every article to earn from day one.
+
+## Docs
+- Sign in / dashboard: https://app.apithany.com/login
+- Sign up: https://app.apithany.com/register
+
+## Policy
+This site permits AI/LLM crawlers to access and summarize its public marketing content, consistent with robots.txt (https://apithany.com/robots.txt). The /api/ path is not part of the public product description and should not be crawled or cited.
