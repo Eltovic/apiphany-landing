@@ -1,5 +1,6 @@
 // POST /api/signup — captures lead email, notifies via Brevo
 import { escapeHtml, truncate, isValidEmail, isRateLimited, getClientIp } from "./_lib/security.js";
+import { getOrCreateLead, logInteraction } from "./_lib/crm.js";
 
 const ALLOWED_SOURCES = new Set(["hero", "cta", "landing"]);
 
@@ -41,12 +42,15 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Apithany", email: "noreply@eastwaresolutions.com" },
-        to: [{ email: "support@eastwaresolutions.com" }],
+        sender: { name: "Apithany", email: "noreply@apithany.com" },
+        to: [{ email: "eastwaresolutions@gmail.com" }],
         subject: `New Apithany lead [${source}]: ${truncate(email, 254)}`,
         htmlContent: `<p style="font-family:sans-serif">New lead from the <strong>${escapeHtml(source)}</strong> form:<br/><a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a></p>`,
       }),
     });
+
+    const leadId = await getOrCreateLead(email, "landing_form");
+    await logInteraction(leadId, "landing_form", `Lead signup from the ${source} form (email-only, no message).`);
 
     return res.status(200).json({ ok: true });
   } catch (err) {

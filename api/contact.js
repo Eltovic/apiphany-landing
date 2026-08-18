@@ -1,5 +1,6 @@
 // POST /api/contact — sends enquiry email via Brevo transactional API
 import { escapeHtml, truncate, isValidEmail, isRateLimited, getClientIp } from "./_lib/security.js";
+import { getOrCreateLead, logInteraction } from "./_lib/crm.js";
 
 const ALLOWED_TYPES = new Set(["general", "enterprise", "partnership", "demo"]);
 
@@ -46,8 +47,8 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Apithany", email: "noreply@eastwaresolutions.com" },
-        to: [{ email: "support@eastwaresolutions.com", name: "Apithany Support" }],
+        sender: { name: "Apithany", email: "noreply@apithany.com" },
+        to: [{ email: "eastwaresolutions@gmail.com", name: "Apithany Support" }],
         replyTo: { email, name },
         subject,
         htmlContent: html,
@@ -59,6 +60,9 @@ export default async function handler(req, res) {
       console.error("Brevo error:", err);
       return res.status(500).json({ error: "Email delivery failed" });
     }
+
+    const leadId = await getOrCreateLead(email, "landing_form", name);
+    await logInteraction(leadId, "landing_form", message, subject);
 
     return res.status(200).json({ ok: true });
   } catch (err) {
