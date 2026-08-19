@@ -62,7 +62,18 @@ export default async function handler(req, res) {
     }
 
     const leadId = await getOrCreateLead(email, "landing_form", name);
-    await logInteraction(leadId, "landing_form", message, subject);
+    const interactionId = await logInteraction(leadId, "landing_form", message, subject);
+
+    if (interactionId) {
+      await fetch("https://app.apithany.com/api/crm/triage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Internal-Secret": process.env.INTERNAL_CRM_SECRET || "",
+        },
+        body: JSON.stringify({ interaction_id: interactionId }),
+      }).catch((err) => console.error("[crm] triage trigger failed:", err));
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {

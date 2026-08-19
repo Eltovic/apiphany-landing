@@ -45,9 +45,9 @@ export async function getOrCreateLead(email, source, name) {
 }
 
 export async function logInteraction(leadId, channel, body, subject) {
-  if (!leadId || !SUPABASE_URL || !SERVICE_KEY) return false;
+  if (!leadId || !SUPABASE_URL || !SERVICE_KEY) return null;
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/crm_interactions`, {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/crm_interactions`, {
       method: "POST",
       headers: headers(),
       body: JSON.stringify({
@@ -59,9 +59,10 @@ export async function logInteraction(leadId, channel, body, subject) {
         ...(subject ? { subject } : {}),
       }),
     });
-    return true;
+    const created = await res.json();
+    return Array.isArray(created) && created.length > 0 ? created[0].id : null;
   } catch (err) {
     console.error("[crm] logInteraction failed:", err);
-    return false;
+    return null;
   }
 }
