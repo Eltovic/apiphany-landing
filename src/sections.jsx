@@ -811,7 +811,7 @@ function Footer(){
             <h4>Company</h4>
             <ul>
               <li><a href="https://app.apithany.com/login">Sign in</a></li>
-              <li><a href="mailto:support@eastwaresolutions.com">Contact</a></li>
+              <li><a href="mailto:support@reply.apithany.com">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -880,9 +880,9 @@ function ContactForm(){
             <span className="eyebrow">Get in touch</span>
             <h2>Let's talk <span className="serif">business.</span></h2>
             <p>Agencies, enterprise teams, and potential partners — we respond within one business day.</p>
-            <a href="mailto:support@eastwaresolutions.com" className="contact-email">
+            <a href="mailto:support@reply.apithany.com" className="contact-email">
               <Icon.rss width="15" height="15" />
-              support@eastwaresolutions.com
+              support@reply.apithany.com
             </a>
           </div>
 
@@ -916,7 +916,7 @@ function ContactForm(){
             </button>
             {status === "error" && (
               <p className="form-error">
-                Something went wrong — email us directly at <a href="mailto:support@eastwaresolutions.com">support@eastwaresolutions.com</a>
+                Something went wrong — email us directly at <a href="mailto:support@reply.apithany.com">support@reply.apithany.com</a>
               </p>
             )}
           </form>
