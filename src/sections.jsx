@@ -61,22 +61,36 @@ function Nav({ onCta }){
 }
 
 /* ============================================
+   SIGNUP (shared by hero + final CTA forms)
+   ============================================ */
+// Posts the email and returns the success message to show. Only promises an
+// email when /api/signup confirms it actually sent one.
+async function submitSignup(email, source){
+  let result = {};
+  try {
+    const r = await fetch("/api/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, source }),
+    });
+    result = await r.json().catch(() => ({}));
+  } catch (_) { /* silent — don't block UX */ }
+  if (!result.emailSent) return "Thanks — we’ll be in touch.";
+  return result.signupsOpen === false
+    ? "You’re on the waitlist — check your inbox for a confirmation."
+    : "Thanks! Check your inbox — we’ve sent you a link to get started.";
+}
+
+/* ============================================
    HERO
    ============================================ */
 function Hero({ headline, sub, onSubmit }){
   const [email, setEmail] = useState("");
-  const [sent, setSent]   = useState(false);
+  const [sent, setSent]   = useState("");
 
   async function handleHeroSubmit(e){
     e.preventDefault();
-    try {
-      await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "hero" }),
-      });
-    } catch (_) { /* silent — don't block UX */ }
-    setSent(true);
+    setSent(await submitSignup(email, "hero"));
     onSubmit && onSubmit(email);
   }
 
@@ -96,7 +110,7 @@ function Hero({ headline, sub, onSubmit }){
 
           {sent ? (
             <div className="hero-sent">
-              <span>✦</span> Check your inbox — we'll be in touch.
+              <span>✦</span> {sent}
             </div>
           ) : (
             <form className="hero-form" onSubmit={handleHeroSubmit}>
@@ -741,18 +755,11 @@ function FAQ(){
    ============================================ */
 function FinalCTA({ headline, onSubmit }){
   const [email, setEmail] = useState("");
-  const [sent, setSent]   = useState(false);
+  const [sent, setSent]   = useState("");
 
   async function handleCtaSubmit(e){
     e.preventDefault();
-    try {
-      await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "cta" }),
-      });
-    } catch (_) { /* silent */ }
-    setSent(true);
+    setSent(await submitSignup(email, "cta"));
     onSubmit && onSubmit(email);
   }
 
@@ -766,7 +773,7 @@ function FinalCTA({ headline, onSubmit }){
           </h2>
           {sent ? (
             <div className="hero-sent" style={{ margin: "32px auto 0", maxWidth: 420 }}>
-              <span>✦</span> Check your inbox — we&apos;ll be in touch.
+              <span>✦</span> {sent}
             </div>
           ) : (
             <form className="hero-form" onSubmit={handleCtaSubmit}>
