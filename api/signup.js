@@ -1,4 +1,4 @@
-// POST /api/signup — captures lead email, confirms to the visitor, notifies owner via Brevo
+// POST /api/signup — captures lead email, confirms to the visitor, notifies owner via the CRM (plain Brevo alert as fallback)
 import { escapeHtml, truncate, isValidEmail, isRateLimited, getClientIp } from "./_lib/security.js";
 import { getOrCreateLead, logInteraction, hasRecentInteraction } from "./_lib/crm.js";
 
@@ -123,27 +123,32 @@ export default async function handler(req, res) {
     }),
   }));
 
-  // 3. Notify owner
-  await step("owner alert", () => fetch("https://api.brevo.com/v3/smtp/email", {
-    method: "POST",
-    headers: brevoHeaders,
-    body: JSON.stringify({
-      sender: { name: "Apithany", email: "noreply@apithany.com" },
-      to: [{ email: "eastwaresolutions@gmail.com" }],
-      subject: `New Apithany lead [${source}]: ${truncate(email, 254)}`,
-      htmlContent: `<p style="font-family:sans-serif">New lead from the <strong>${escapeHtml(source)}</strong> form:<br/><a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a><br/>Signups ${signupsOpen ? "open" : "PAUSED (waitlist)"} · confirmation email ${emailSent ? "sent" : "NOT sent — check Vercel logs"}</p>`,
-    }),
-  }));
-
-  // 4. CRM triage (lead + interaction were logged up front, see 0.)
+  // 3. Notify the owner through the CRM: triage sends the single
+  // "New CRM inquiry" email (with the Review & respond link).
+  let crmNotified = false;
   if (interactionId) {
-    await step("crm triage", () => fetch("https://app.apithany.com/api/crm/triage", {
+    crmNotified = await step("crm triage", () => fetch("https://app.apithany.com/api/crm/triage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-Internal-Secret": process.env.INTERNAL_CRM_SECRET || "",
       },
       body: JSON.stringify({ interaction_id: interactionId }),
+    }));
+  }
+
+  // 4. Fallback only: if the CRM write or the triage call failed, send the
+  // plain lead alert so no signup goes unnoticed.
+  if (!crmNotified) {
+    await step("owner alert (CRM fallback)", () => fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: brevoHeaders,
+      body: JSON.stringify({
+        sender: { name: "Apithany", email: "noreply@apithany.com" },
+        to: [{ email: "eastwaresolutions@gmail.com" }],
+        subject: `New Apithany lead [${source}]: ${truncate(email, 254)}`,
+        htmlContent: `<p style="font-family:sans-serif">New lead from the <strong>${escapeHtml(source)}</strong> form:<br/><a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a><br/>Signups ${signupsOpen ? "open" : "PAUSED (waitlist)"} · confirmation email ${emailSent ? "sent" : "NOT sent — check Vercel logs"}<br/><em>Sent because the CRM could not record or notify this lead — check Vercel logs.</em></p>`,
+      }),
     }));
   }
 
