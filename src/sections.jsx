@@ -122,13 +122,13 @@ function Hero({ headline, sub, onSubmit }){
                 onChange={(e) => setEmail(e.target.value)}
               />
               <button className="btn btn-primary" type="submit">
-                Get started <Icon.arrow width="16" height="16" />
+                Get early access <Icon.arrow width="16" height="16" />
               </button>
             </form>
           )}
           <div className="hero-microcopy">
             <span><span className="dot" /> Plans from $49 / mo</span>
-            <span>· Setup in minutes</span>
+            <span>· New accounts open in waves</span>
             <span>· Cancel anytime</span>
           </div>
         </div>
@@ -194,16 +194,16 @@ function HeroStage(){
       <div className="float-card" style={{ bottom: "24%", left: "4%", animationDelay: "3s" }}>
         <span className="badge"><Icon.chart width="14" height="14" /></span>
         <div>
-          <div style={{ fontWeight: 600 }}>+$148 today</div>
-          <div style={{ fontSize: 11, color: "var(--muted-cream)" }}>Amazon · 12 conversions</div>
+          <div style={{ fontWeight: 600 }}>Affiliate links placed</div>
+          <div style={{ fontSize: 11, color: "var(--muted-cream)" }}>Awin · Amazon · CJ</div>
         </div>
       </div>
 
       <div className="float-card" style={{ bottom: "4%", right: "0%", animationDelay: "4.5s" }}>
         <span className="badge"><Icon.link width="14" height="14" /></span>
         <div>
-          <div style={{ fontWeight: 600 }}>DR +4 this week</div>
-          <div style={{ fontSize: 11, color: "var(--muted-cream)" }}>8 pitches · 3 links won</div>
+          <div style={{ fontWeight: 600 }}>Outreach drafted</div>
+          <div style={{ fontSize: 11, color: "var(--muted-cream)" }}>3 link opportunities to review</div>
         </div>
       </div>
     </div>
@@ -214,11 +214,11 @@ function HeroStage(){
    MARQUEE
    ============================================ */
 function Marquee(){
-  const items = ["Amazon Associates", "Impact", "ShareASale", "CJ Affiliate", "Awin", "Rakuten", "ClickBank", "PartnerStack"];
+  const items = ["Amazon Associates", "Awin", "CJ Affiliate", "WordPress", "Pinterest", "LinkedIn", "Google Search Console", "Brevo"];
   return (
     <section className="marquee">
       <div className="wrap" style={{ marginBottom: 12 }}>
-        <div className="marquee-label">Connected to the networks that matter</div>
+        <div className="marquee-label">Works with</div>
       </div>
       <div className="marquee-track">
         {[...items, ...items, ...items].map((it, i) => (
@@ -236,7 +236,7 @@ function Marquee(){
    ============================================ */
 function HowItWorks(){
   const steps = [
-    { n: "01", title: "Discover", icon: <Icon.search width="20" height="20" />, body: "Scout agent scores 10,000+ niches across 10 dimensions — search volume, competition, payout, intent, and affiliate availability." },
+    { n: "01", title: "Discover", icon: <Icon.search width="20" height="20" />, body: "Scout agent scores each niche idea across 10 dimensions — search volume, competition, payout, intent, and affiliate availability." },
     { n: "02", title: "Brief", icon: <Icon.hex width="20" height="20" />, body: "Strategy agent picks winning keywords and writes briefs with structure, target intent, link slots, and GEO priority scoring." },
     { n: "03", title: "Write & Score", icon: <Icon.pencil width="20" height="20" />, body: "Author agent drafts GEO-tuned articles scored for AI citation readiness. Editor validates facts, inserts affiliate links, and runs AEO quality checks." },
     { n: "04", title: "Publish & Pin", icon: <Icon.bolt width="20" height="20" />, body: "Publisher ships to WordPress with full schema markup, AIOSEO meta, and featured image — then auto-pins to Pinterest and posts to LinkedIn." },
@@ -268,17 +268,18 @@ function DashboardPreview(){
   return (
     <section className="preview-section" data-screen-label="03 Dashboard">
       <div className="wrap">
-        <span className="eyebrow">The ATH engine, live</span>
+        <span className="eyebrow">The dashboard</span>
         <h2 style={{ fontSize: "clamp(36px, 4.5vw, 60px)", letterSpacing: "-0.03em", color: "var(--paper)", marginTop: 18, maxWidth: 720 }}>
-          Watch your agents work, <span className="serif" style={{ color: "var(--honey)" }}>in real time.</span>
+          See what your agents are doing, <span className="serif" style={{ color: "var(--honey)" }}>as they do it.</span>
         </h2>
+        <p style={{ color: "var(--moss-2)", fontSize: 14, marginTop: 12 }}>Illustration with sample data — not real results.</p>
 
         <div className="preview-frame">
           <div className="preview-bar">
             <span className="dot" style={{ background: "#E08A7F" }} />
             <span className="dot" style={{ background: "#E8B84A" }} />
             <span className="dot" style={{ background: "#7FB66E" }} />
-            <span className="url">app.apithany.com / dashboard</span>
+            <span className="url">app.apithany.com / dashboard · sample data</span>
           </div>
           <FakeDashboard />
         </div>
@@ -293,7 +294,7 @@ function FakeDashboard(){
       {/* sidebar */}
       <div className="preview-sidebar">
         <div style={{ fontFamily: "JetBrains Mono", fontSize: 11, letterSpacing: ".12em", color: "var(--muted-cream)", textTransform: "uppercase", marginBottom: 14 }}>Workspace</div>
-        {["Niches", "Articles", "Affiliate links", "Revenue", "Agents", "Settings"].map((it, i) => (
+        {["Niches", "Articles", "Affiliate links", "Analytics", "Agents", "Settings"].map((it, i) => (
           <div key={it} style={{
             padding: "8px 12px",
             borderRadius: 10,
@@ -313,10 +314,10 @@ function FakeDashboard(){
         {/* row stats */}
         <div className="preview-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 18 }}>
           {[
-            { lbl: "Revenue (30d)", val: "$4,820", trend: "+38%" },
             { lbl: "Articles live", val: "147", trend: "+12 this wk" },
-            { lbl: "Clicks", val: "9,431", trend: "+22%" },
-            { lbl: "Conv. rate", val: "4.8%", trend: "+0.6pt" },
+            { lbl: "Avg AEO score", val: "82", trend: "out of 100" },
+            { lbl: "Briefs queued", val: "36", trend: "next 30 days" },
+            { lbl: "Affiliate links", val: "412", trend: "across 3 networks" },
           ].map((s, i) => (
             <div key={i} style={{ background: "var(--cream)", borderRadius: 12, padding: 14 }}>
               <div style={{ fontSize: 11, color: "var(--muted-cream)", fontFamily: "JetBrains Mono", letterSpacing: ".08em", textTransform: "uppercase" }}>{s.lbl}</div>
@@ -329,7 +330,7 @@ function FakeDashboard(){
         {/* chart */}
         <div style={{ background: "var(--cream)", borderRadius: 12, padding: 18, marginBottom: 18 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }}>Revenue · last 30 days</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }}>Articles published · last 30 days</div>
             <div style={{ display: "flex", gap: 6 }}>
               {["7d", "30d", "90d"].map((p, i) => (
                 <span key={p} style={{
@@ -357,7 +358,7 @@ function FakeDashboard(){
 
         {/* agent log */}
         <div style={{ background: "var(--ink)", color: "var(--paper)", borderRadius: 12, padding: 18, fontFamily: "JetBrains Mono", fontSize: 12.5, lineHeight: 1.7 }}>
-          <div style={{ color: "var(--moss-2)", marginBottom: 8 }}>// Agent log · live</div>
+          <div style={{ color: "var(--moss-2)", marginBottom: 8 }}>// Agent log · example</div>
           <div><span style={{ color: "var(--honey)" }}>scout</span>     ▸ niche <span style={{ color: "var(--paper)" }}>"gaming headsets"</span> — score 93 · 6 networks</div>
           <div><span style={{ color: "var(--honey)" }}>strategist</span> ▸ 8 keyword briefs → AEO priority queue</div>
           <div><span style={{ color: "var(--honey)" }}>author</span>    ▸ drafted <span style={{ color: "var(--paper)" }}>"Best Gaming Headsets 2026"</span> · 2,840 words</div>
@@ -398,26 +399,26 @@ function Features(){
           <div className="feature span-3 tall honey">
             <div className="ficon"><Icon.pencil width="20" height="20" /></div>
             <h3>SEO-tuned drafts in your tone</h3>
-            <p>Train the editor on three of your best posts. New articles match cadence, structure and reading level — not just the keyword.</p>
+            <p>Pick a tone and write your house rules once. Every new draft follows your writing instructions — not just the keyword.</p>
             <ToneSwatches />
           </div>
 
           <div className="feature span-2">
             <div className="ficon"><Icon.link width="20" height="20" /></div>
             <h3>Smart affiliate links</h3>
-            <p>Inserted contextually, deduped, and rotated by EPC. Geo-aware for Amazon Associates.</p>
+            <p>Inserted in context, deduplicated, and prioritised by EPC from your own Awin, Amazon and CJ programmes.</p>
           </div>
 
           <div className="feature span-2">
             <div className="ficon"><Icon.rss width="20" height="20" /></div>
             <h3>WordPress, fully automated</h3>
-            <p>Publishes with schema markup, AIOSEO meta, featured image, and sitemap ping. Syncs to Pinterest and LinkedIn — zero manual steps.</p>
+            <p>Publishes with schema markup, AIOSEO meta and a featured image, then prepares Pinterest and LinkedIn posts for you.</p>
           </div>
 
           <div className="feature span-2">
             <div className="ficon"><Icon.shield width="20" height="20" /></div>
             <h3>AI Citation Ready</h3>
-            <p>Every article is AEO + GEO scored before publish. Structured so ChatGPT, Perplexity, and Google SGE cite your content by name.</p>
+            <p>Every article is AEO + GEO scored before publish, with clear answers, verdicts and schema that AI assistants like ChatGPT and Perplexity can quote.</p>
           </div>
 
           {/* DR Outreach — full-width new feature */}
@@ -432,7 +433,7 @@ function Features(){
             </div>
             <h3 style={{ margin: 0 }}>Domain Rating growth, on autopilot</h3>
             <p style={{ margin: 0 }}>
-              A link-building agent scans for broken external links on high-DR sites, unlinked brand mentions across the web, and 21 verified niche directories. AI drafts the outreach email for each opportunity — you review and approve with one click. DR compounds every week without any manual prospecting.
+              A link-building agent scans for broken external links on high-DR sites, unlinked brand mentions across the web, and 21 verified niche directories. AI drafts the outreach email for each opportunity — you review and approve with one click. No manual prospecting.
             </p>
             {/* Stats — 3-column grid so each cell gets equal width on any screen size */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", paddingTop: 4 }}>
@@ -505,10 +506,10 @@ function ToneSwatches(){
    ============================================ */
 function LiveSite(){
   const niches = [
-    { tag: "Personal Finance", title: "Best Budgeting Apps of 2025" },
-    { tag: "Pet Health",       title: "Royal Canin vs Purina Pro Plan" },
-    { tag: "Home Security",    title: "Ring vs Arlo: Full Comparison" },
-    { tag: "Budget Travel",    title: "Cheapest Ways to Fly to Europe" },
+    { tag: "SaaS Reviews",  title: "Canva vs Figma for Marketers (2026)" },
+    { tag: "Pet Health",    title: "Orijen vs Acana (2026): Which Dog Food Is the Better Fit?" },
+    { tag: "Home Security", title: "Best Home Security Systems for Vacation Homes (2026)" },
+    { tag: "Budget Travel", title: "Best Budget Travel Backpacks of 2026" },
   ];
   return (
     <section className="live-section" id="live-site" data-screen-label="05b Live Site">
@@ -517,20 +518,20 @@ function LiveSite(){
 
           <div className="live-copy">
             <span className="eyebrow">Built with Apithany</span>
-            <h2 style={{ color: "var(--ink)" }}>Ranked by Google.<br /><span className="serif" style={{ color: "var(--ink)" }}>Running on autopilot.</span></h2>
-            <p>Reviewers&apos; Guild is a live affiliate blog running entirely on Apithany — no writers, no editorial team. Five AI agents pick niches, write GEO-tuned articles, inject affiliate links, and publish daily.</p>
+            <h2 style={{ color: "var(--ink)" }}>Our own site.<br /><span className="serif" style={{ color: "var(--ink)" }}>Our proving ground.</span></h2>
+            <p>Reviewers&apos; Guild is our own affiliate blog, built on Apithany. The agents pick niches, research and draft articles, insert affiliate links and publish; our editorial team reviews and improves what goes live.</p>
             <div className="live-stats">
               <div className="live-stat">
-                <span className="live-num">229<span className="serif">+</span></span>
+                <span className="live-num">250<span className="serif">+</span></span>
                 <span className="live-lbl">Articles live</span>
               </div>
               <div className="live-stat">
                 <span className="live-num">6</span>
-                <span className="live-lbl">Active niches</span>
+                <span className="live-lbl">Niches</span>
               </div>
               <div className="live-stat">
-                <span className="live-num">Daily</span>
-                <span className="live-lbl">New content</span>
+                <span className="live-num">3</span>
+                <span className="live-lbl">Affiliate networks</span>
               </div>
             </div>
             <a href="https://www.reviewersguild.blog" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
@@ -581,7 +582,7 @@ function Quote(){
           <div>
             <div className="quote-eyebrow">From the founder</div>
             <blockquote>
-              "We built Apithany to run our own affiliate network. Reviewers&apos; Guild went from zero to 229 published articles across 6 niches — with no writers and no editorial team. Every article is scored for AI citation readiness before it ships."
+              "We built Apithany to run our own affiliate sites. Reviewers&apos; Guild went from zero to more than 250 published articles across 6 niches. Every article is scored for AI citation readiness before it ships."
             </blockquote>
             <div className="who">
               <div className="avatar">I</div>
@@ -593,16 +594,16 @@ function Quote(){
           </div>
           <div className="quote-stats">
             <div className="quote-stat">
-              <div className="num">229<span className="serif">+</span></div>
+              <div className="num">250<span className="serif">+</span></div>
               <div className="lbl">Articles published</div>
             </div>
             <div className="quote-stat">
               <div className="num">6</div>
-              <div className="lbl">Active niches</div>
+              <div className="lbl">Niches</div>
             </div>
             <div className="quote-stat">
-              <div className="num">$0</div>
-              <div className="lbl">Content spend</div>
+              <div className="num">100%</div>
+              <div className="lbl">AEO-scored before publish</div>
             </div>
           </div>
         </div>
@@ -621,23 +622,23 @@ function Pricing(){
     { name: "Starter", mo: 49, yr: 39, desc: "Launch your first autonomous niche site.", model: "Gemini 2.5 Flash", feat: false, cta: "Get started", href: "https://app.apithany.com/register?plan=starter", items: [
       "1 site · 30 articles / mo",
       "1 niche · AEO/GEO scoring",
-      "Auto-provisioned WordPress site",
+      "WordPress site set up for you (hosting $12 / mo extra)",
       "Awin + Amazon affiliates",
       "Pinterest + Email distribution",
     ]},
     { name: "Pro", mo: 149, yr: 119, desc: "Scale across niches with Claude-powered writing.", model: "Claude Sonnet 4.6", feat: true, cta: "Start with Pro", href: "https://app.apithany.com/register?plan=pro", items: [
       "1 site · 100 articles / mo",
       "5 niches · Regional targeting (10 markets)",
-      "All social channels",
-      "A/B headline testing · Priority queue",
-      "All affiliate networks",
+      "LinkedIn + Pinterest auto-post",
+      "Writing instructions (custom tone)",
+      "Google Analytics + Search Console",
     ]},
-    { name: "Agency", mo: 349, yr: 279, desc: "Unlimited scale for agencies and portfolios.", model: "Claude Sonnet 4.6", feat: false, cta: "Start with Agency", href: "https://app.apithany.com/register?plan=agency", items: [
+    { name: "Agency", mo: 349, yr: 279, desc: "Run up to three sites from one dashboard.", model: "Claude Sonnet 4.6", feat: false, cta: "Start with Agency", href: "https://app.apithany.com/register?plan=agency", items: [
       "Up to 3 sites · 300 articles / mo",
-      "Unlimited niches · CTR title optimizer",
-      "SSO + audit log",
-      "White-label dashboard",
-      "Slack-shared CSM",
+      "Up to 15 niches · CTR title optimizer",
+      "5-channel DR outreach",
+      "SERP competitor headline benchmarking",
+      "Everything in Pro",
     ]},
   ];
 
@@ -646,7 +647,7 @@ function Pricing(){
       <div className="wrap">
         <span className="eyebrow">Pricing</span>
         <h2 style={{ fontSize: "clamp(36px, 4.5vw, 60px)", color: "var(--ink)", marginTop: 18, maxWidth: 700 }}>
-          One price. <span className="serif" style={{ color: "var(--accent-deep)" }}>Every agent.</span>
+          Simple pricing. <span className="serif" style={{ color: "var(--accent-deep)" }}>Every core agent.</span>
         </h2>
 
         <div className="billing-toggle">
@@ -701,23 +702,23 @@ function FAQ(){
   const items = [
     {
       q: "How does the article writing actually work?",
-      a: "Five specialised agents collaborate on every article. A Scout identifies high-opportunity niches, a Strategist writes the brief, an Author drafts 2,000–3,500 words, an Editor runs AEO/GEO quality scoring, and a Publisher ships it to WordPress with schema markup, AIOSEO meta, and a featured image — all without you touching a keyboard.",
+      a: "Five specialised agents collaborate on every article. A Scout identifies high-opportunity niches, a Strategist writes the brief, an Author drafts 2,000–3,500 words, an Editor runs AEO/GEO quality scoring, and a Publisher ships it to WordPress with schema markup, AIOSEO meta, and a featured image. You can review every article in your Content Queue.",
     },
     {
       q: "Do I need an existing WordPress site?",
-      a: "No. Every plan includes an auto-provisioned WordPress site with hosting. If you already have a site, connect it during onboarding with your WP application password and Apithany will publish directly to it.",
+      a: "No. Apithany can register a domain and set up a WordPress site for you (hosting is $12 / mo, plus the domain at cost). Already have a WordPress site? Email support and we'll connect it for you.",
     },
     {
       q: "Can I use my own affiliate accounts?",
-      a: "Yes. You bring your own Awin, Amazon Associates, and CJ/ShareASale credentials. Every affiliate link inserted into your articles earns revenue directly in your account — we never take a cut of your commissions.",
+      a: "Yes. Add your own Awin, Amazon Associates and CJ affiliate links in the Affiliate Manager. Commissions are paid straight into your accounts — we never take a cut.",
     },
     {
       q: "What's AEO/GEO scoring and why does it matter?",
-      a: "Answer Engine Optimisation (AEO) and Generative Engine Optimisation (GEO) measure how likely your content is to be cited by AI assistants like ChatGPT, Perplexity, and Google SGE. Every Apithany article is scored before publish. Articles below 65/100 are automatically improved before going live.",
+      a: "Answer Engine Optimisation (AEO) and Generative Engine Optimisation (GEO) measure how well your content is structured for AI assistants like ChatGPT and Perplexity — clear answers, verdicts, data and sources. Every Apithany article is scored before publish; articles that score too low are improved automatically, and held back if they still fall short.",
     },
     {
       q: "Which niches perform best?",
-      a: "Our Scout agent scores niches across 10 dimensions in real time. Top categories include SaaS product reviews, gaming gear, personal finance tools, home security, and budget travel. Niches with strong affiliate payouts and moderate competition score highest — you can run the niche scorer on any category in your dashboard.",
+      a: "There's no guaranteed winner. Our Scout agent scores any niche you suggest across 10 dimensions, and niches with strong affiliate payouts and moderate competition score highest. Our own site covers SaaS reviews, gaming gear, pet health, personal finance, home security and budget travel.",
     },
     {
       q: "Can I cancel anytime?",
@@ -779,7 +780,7 @@ function FinalCTA({ headline, onSubmit }){
             <form className="hero-form" onSubmit={handleCtaSubmit}>
               <input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
               <button className="btn btn-primary" type="submit">
-                Get started <Icon.arrow width="16" height="16" />
+                Get early access <Icon.arrow width="16" height="16" />
               </button>
             </form>
           )}

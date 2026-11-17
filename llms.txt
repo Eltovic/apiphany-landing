@@ -7,7 +7,7 @@ Apithany is built and operated by Eastware Solutions International LLC.
 ## Product
 - Niche Discovery: AI agents score content opportunities across multiple dimensions to find gaps before competitors do.
 - Autonomous Publishing: from keyword brief to a live WordPress post with affiliate links inserted, with no manual editing step.
-- Revenue on Autopilot: integrates with major affiliate networks (Amazon Associates, Awin) and optimises every article to earn from day one.
+- Revenue on Autopilot: inserts the customer's own affiliate links (Amazon Associates, Awin, CJ) into every article.
 
 ## Docs
 - Sign in / dashboard: https://app.apithany.com/login

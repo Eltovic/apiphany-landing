@@ -107,9 +107,12 @@
 
 <link rel="stylesheet" href="src/landing.css" />
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<!-- Compiled from src/*.jsx by ./build.sh — edit the .jsx, rebuild, commit both. -->
+<script defer src="dist/icons.js"></script>
+<script defer src="dist/sections.js"></script>
+<script defer src="dist/landing.js"></script>
 </head>
 <body>
 
@@ -127,17 +130,17 @@
     <a href="#pricing"   style="color:#F0EFE6;text-decoration:none;">Pricing</a>
     <a href="#faq"       style="color:#F0EFE6;text-decoration:none;">FAQ</a>
     <a href="https://app.apithany.com/login"    style="color:#F0EFE6;text-decoration:none;">Sign in</a>
-    <a href="https://app.apithany.com/register" style="color:#E8B84A;text-decoration:none;">Get started</a>
+    <a href="https://app.apithany.com/register" style="color:#E8B84A;text-decoration:none;">Get early access</a>
   </nav>
   <main style="padding:48px 24px;max-width:900px;margin:0 auto;">
     <h1 style="font-size:clamp(36px,5vw,72px);font-weight:700;line-height:1.1;margin:0 0 24px;letter-spacing:-0.03em;">
       Autonomous content. Real affiliate revenue.
     </h1>
     <p style="font-size:18px;line-height:1.6;max-width:640px;color:#B9C9B0;margin:0 0 32px;">
-      Five AI agents discover niches, write SEO articles, inject affiliate links and publish straight to your site — entirely on autopilot. Plans from $49/mo.
+      Five AI agents discover niches, write SEO articles, insert your affiliate links and publish straight to your WordPress site. Plans from $49/mo.
     </p>
     <a href="https://app.apithany.com/register" style="display:inline-block;padding:14px 28px;background:#E8B84A;color:#0B2118;font-weight:700;border-radius:999px;text-decoration:none;">
-      Get started
+      Get early access
     </a>
 
     <section id="how" style="margin-top:80px;">
@@ -150,18 +153,18 @@
       <p>Built like a newsroom that never sleeps. Niche discovery scored on 10 axes, SEO-tuned drafts in your tone, smart affiliate links, full WordPress automation, AI citation readiness scoring, and automated domain rating growth.</p>
 
       <h3 style="margin-top:32px;">Domain Rating growth, on autopilot</h3>
-      <p>A link-building agent scans for broken external links, unlinked brand mentions, and 21 verified web directories where your site should be listed. AI drafts the outreach email — you approve and send in one click. DR compounds every week without manual prospecting.</p>
+      <p>A link-building agent scans for broken external links, unlinked brand mentions, and 21 verified web directories where your site should be listed. AI drafts the outreach email — you approve and send in one click.</p>
     </section>
 
     <section id="live-site" style="margin-top:80px;">
-      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 16px;">Ranked by Google. Running on autopilot.</h2>
-      <p>Reviewers' Guild is a live affiliate blog built entirely with Apithany — 229+ published articles across 6 niches, no writers, no editorial team.</p>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 16px;">Our own site. Our proving ground.</h2>
+      <p>Reviewers' Guild is our own affiliate blog, built on Apithany — 250+ published articles across 6 niches, reviewed and improved by our editorial team.</p>
       <a href="https://www.reviewersguild.blog" style="color:#E8B84A;">See it live →</a>
     </section>
 
     <section id="pricing" style="margin-top:80px;">
       <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;margin:0 0 16px;">Pricing</h2>
-      <p>Starter $49/mo · Pro $149/mo · Agency $349/mo. Every plan includes auto-provisioned WordPress hosting.</p>
+      <p>Starter $49/mo · Pro $149/mo · Agency $349/mo. We can set up a WordPress site for you (hosting $12/mo extra).</p>
     </section>
 
     <section id="faq" style="margin-top:80px;">
@@ -171,27 +174,5 @@
   </main>
 </div>
 
-<script type="text/babel" src="src/tweaks-panel.jsx"></script>
-<script type="text/babel" src="src/icons.jsx"></script>
-<script type="text/babel" src="src/sections.jsx"></script>
-<script type="text/babel" src="src/landing.jsx"></script>
-
-<script>
-  // Babel standalone may miss DOMContentLoaded if CDN scripts load slowly.
-  // This ensures the transform always runs.
-  (function ensureBabel() {
-    function run() {
-      if (typeof Babel !== 'undefined' && document.getElementById('root').childElementCount === 0) {
-        Babel.transformScriptTags();
-      }
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', run);
-    }
-    window.addEventListener('load', run);
-    // Final fallback: retry after a short delay
-    setTimeout(run, 200);
-  })();
-</script>
 </body>
 </html>
