@@ -66,3 +66,26 @@ export async function logInteraction(leadId, channel, body, subject) {
     return null;
   }
 }
+
+// True when this lead already has an interaction on `channel` within the last
+// `minutes` (optionally only those whose body starts with `bodyPrefix`) — used to drop duplicate form submissions (double clicks, retries)
+// before any email is sent. Fails open (returns false) so a lookup error never
+// blocks a genuine signup.
+export async function hasRecentInteraction(leadId, channel, minutes = 10, bodyPrefix) {
+  if (!leadId || !SUPABASE_URL || !SERVICE_KEY) return false;
+  try {
+    const since = new Date(Date.now() - minutes * 60 * 1000).toISOString();
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/crm_interactions?lead_id=eq.${encodeURIComponent(leadId)}` +
+        `&channel=eq.${encodeURIComponent(channel)}&created_at=gte.${encodeURIComponent(since)}` +
+        (bodyPrefix ? `&body=like.${encodeURIComponent(bodyPrefix + "*")}` : "") +
+        `&select=id&limit=1`,
+      { headers: headers() }
+    );
+    const rows = await res.json();
+    return Array.isArray(rows) && rows.length > 0;
+  } catch (err) {
+    console.error("[crm] hasRecentInteraction failed:", err);
+    return false;
+  }
+}

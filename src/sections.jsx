@@ -88,8 +88,12 @@ function Hero({ headline, sub, onSubmit }){
   const [email, setEmail] = useState("");
   const [sent, setSent]   = useState("");
 
+  const [busy, setBusy]   = useState(false);
+
   async function handleHeroSubmit(e){
     e.preventDefault();
+    if (busy) return;            // one submission per click — blocks double-submit while the request is in flight
+    setBusy(true);
     setSent(await submitSignup(email, "hero"));
     onSubmit && onSubmit(email);
   }
@@ -121,8 +125,8 @@ function Hero({ headline, sub, onSubmit }){
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <button className="btn btn-primary" type="submit">
-                Get early access <Icon.arrow width="16" height="16" />
+              <button className="btn btn-primary" type="submit" disabled={busy}>
+                {busy ? "Sending…" : <>Get early access <Icon.arrow width="16" height="16" /></>}
               </button>
             </form>
           )}
@@ -758,8 +762,12 @@ function FinalCTA({ headline, onSubmit }){
   const [email, setEmail] = useState("");
   const [sent, setSent]   = useState("");
 
+  const [busy, setBusy]   = useState(false);
+
   async function handleCtaSubmit(e){
     e.preventDefault();
+    if (busy) return;            // one submission per click — blocks double-submit while the request is in flight
+    setBusy(true);
     setSent(await submitSignup(email, "cta"));
     onSubmit && onSubmit(email);
   }
@@ -779,8 +787,8 @@ function FinalCTA({ headline, onSubmit }){
           ) : (
             <form className="hero-form" onSubmit={handleCtaSubmit}>
               <input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
-              <button className="btn btn-primary" type="submit">
-                Get early access <Icon.arrow width="16" height="16" />
+              <button className="btn btn-primary" type="submit" disabled={busy}>
+                {busy ? "Sending…" : <>Get early access <Icon.arrow width="16" height="16" /></>}
               </button>
             </form>
           )}
