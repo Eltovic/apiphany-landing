@@ -1,6 +1,6 @@
 // POST /api/signup — captures lead email, confirms to the visitor, notifies owner via Brevo
 import { escapeHtml, truncate, isValidEmail, isRateLimited, getClientIp } from "./_lib/security.js";
-import { getOrCreateLead, logInteraction } from "./_lib/crm.js";
+import { getOrCreateLead, logInteraction, hasRecentInteraction } from "./_lib/crm.js";
 
 const ALLOWED_SOURCES = new Set(["hero", "cta", "landing"]);
 
@@ -80,6 +80,22 @@ export default async function handler(req, res) {
   const source = ALLOWED_SOURCES.has(raw.source) ? raw.source : "landing";
   const brevoHeaders = { "api-key": (process.env.BREVO_API_KEY || "").trim(), "Content-Type": "application/json" };
 
+  // 0. CRM lead + dedupe. The same email submitted again within 10 minutes
+  // (double click, Enter pressed twice, client retry) is a duplicate: return
+  // success without re-sending the confirmation, owner alert or CRM inquiry.
+  // The interaction is logged BEFORE the slow email/triage calls so a second
+  // request arriving a few seconds later already sees it.
+  const leadId = await getOrCreateLead(email, "landing_form");
+  if (leadId && await hasRecentInteraction(leadId, "landing_form", 10, "Lead signup from the ")) {
+    return res.status(200).json({ ok: true, emailSent: true, signupsOpen: await areSignupsOpen(), duplicate: true });
+  }
+  let interactionId = null;
+  if (leadId) {
+    interactionId = await logInteraction(leadId, "landing_form", `Lead signup from the ${source} form (email-only, no message).`);
+  } else {
+    console.error("[signup] crm failed: getOrCreateLead returned no id");
+  }
+
   // 1. Add to Brevo contact list (list ID 3 = Apithany leads)
   await step("brevo contact", () => fetch("https://api.brevo.com/v3/contacts", {
     method: "POST",
@@ -119,14 +135,7 @@ export default async function handler(req, res) {
     }),
   }));
 
-  // 4. CRM lead + interaction + triage
-  let interactionId = null;
-  await step("crm", async () => {
-    const leadId = await getOrCreateLead(email, "landing_form");
-    if (!leadId) throw new Error("getOrCreateLead returned no id");
-    interactionId = await logInteraction(leadId, "landing_form", `Lead signup from the ${source} form (email-only, no message).`);
-  });
-
+  // 4. CRM triage (lead + interaction were logged up front, see 0.)
   if (interactionId) {
     await step("crm triage", () => fetch("https://app.apithany.com/api/crm/triage", {
       method: "POST",
